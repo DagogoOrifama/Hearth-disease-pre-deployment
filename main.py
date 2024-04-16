@@ -3,7 +3,7 @@ from PIL import Image
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.models import load_model
 
-def preprocess_and_predict(image_path, model_path='model/lungcan_model.h5', class_names=['Benign', 'Malignant', 'Normal']):
+def preprocess_and_predict(image_path, model_path='model/lungcan_model_efficientnetb0_Finetuned.h5', class_names=['Benign', 'Malignant', 'Normal']):
     # Load the model
     model = load_model(model_path)
 
