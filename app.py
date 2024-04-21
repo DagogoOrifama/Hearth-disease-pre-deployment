@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing import image
 app = Flask(__name__)
 
 # Load the pre-trained model
-model = load_model('models/lungcan_model2.h5')
+model = load_model('model/model.tflite')
 
 @app.route('/')
 def home():
