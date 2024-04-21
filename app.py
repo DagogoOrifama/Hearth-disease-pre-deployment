@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing import image
 app = Flask(__name__)
 
 # Load the pre-trained model
-model = load_model('models/lungcan_model_efficientnetb0_Finetuned.h5')
+model = load_model('models/lungcan_model2.h5')
 
 @app.route('/')
 def home():
