@@ -3,7 +3,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
 # Load the pre-trained model
-model_path = 'models/lungcan_model.h5'
+model_path = 'models/lungcan_model_efficientnetb0_Finetuned.h5'
 model = load_model(model_path)
 class_names = ['Benign', 'Malignant', 'Normal']
 
