@@ -1,25 +1,28 @@
 import numpy as np
-from PIL import Image
-from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
 
-def preprocess_and_predict(image_path, model_path='model/lungcan_model_efficientnetb0_Finetuned.h5', class_names=['Benign', 'Malignant', 'Normal']):
-    # Load the model
-    model = load_model(model_path)
+# Load the pre-trained model
+model_path = 'models/lungcan_model.h5'
+model = load_model(model_path)
+class_names = ['Benign', 'Malignant', 'Normal']
 
+def preprocess_and_predict(image_path):
+    """Load, preprocess, and predict the class of an image."""
     # Load and preprocess the image
-    img = image.load_img(image_path, target_size=(224, 224))  # Load and resize the image
-    img_array = image.img_to_array(img)  # Convert the image to a numpy array
-    img_array = img_array / 255.0  # Rescale the image
-    img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension
+    img = image.load_img(image_path, target_size=(224, 224))
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0) / 255.0  # Normalize the image array
 
-    # Make a prediction
+    # Make predictions
     predictions = model.predict(img_array)
-    
-    # Determine the predicted class name
     predicted_class_index = np.argmax(predictions)
-    predicted_class_name = class_names[predicted_class_index]
-    return predicted_class_name, predictions
+    predicted_class = class_names[predicted_class_index]
+    
+    return predicted_class
 
-
-#test_prediction =getPrediction('example.jpg')
+if __name__ == '__main__':
+    # Example usage
+    image_path = 'path_to_your_image.jpg'
+    result = preprocess_and_predict(image_path)
+    print(f"Predicted class for the image is: {result}")
