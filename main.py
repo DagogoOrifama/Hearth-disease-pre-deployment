@@ -23,6 +23,6 @@ def preprocess_and_predict(image_path):
 
 if __name__ == '__main__':
     # Example usage
-    image_path = 'path_to_your_image.jpg'
-    result = preprocess_and_predict(image_path)
-    print(f"Predicted class for the image is: {result}")
+    # image_path = 'path_to_your_image.jpg'
+    # result = preprocess_and_predict(image_path)
+    # print(f"Predicted class for the image is: {result}")
