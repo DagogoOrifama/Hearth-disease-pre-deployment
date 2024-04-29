@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung Cancer Classifier</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            border-bottom: 5px solid darkblue;
+        }
+        .container {
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            border-radius: 8px;
+            width: 50%;
+        }
+        .file-input {
+            width: 80%; 
+            margin: auto; 
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+        img.display-image {
+            max-width: 30%; 
+            height: auto; 
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="header text-center">
+        <h1>LungLesNet - Lung Cancer Image Detector</h1>
+    </div>
+    <div class="container text-center">
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div class="file-input">
+                <input type="file" name="imagefile" class="form-control">
+            </div>
+            <input type="submit" value="Predict Image" class="btn btn-primary mt-3">
+        </form>
+
+        {% if prediction %}
+            <p class="result">Image is classified as: <strong>{{prediction}}</strong></p>
+            <img src="{{ image_path }}" alt="Uploaded Image" class="display-image">
+        {% endif %}
+    </div>
+</body>
+</html>
